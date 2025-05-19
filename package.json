@@ -1,0 +1,22 @@
+{
+  "dependencies": {
+    "express": "^5.1.0"
+  },
+  "name": "cse-341",
+  "version": "1.0.0",
+  "description": "My First projet",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rachealkatono/cse-341.git"
+  },
+  "author": "Racheal katono",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rachealkatono/cse-341/issues"
+  },
+  "homepage": "https://github.com/rachealkatono/cse-341#readme"
+}
