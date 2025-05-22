@@ -13,10 +13,10 @@ GET http://localhost:3000/
 ### Render API Tests
 
 ### Get all contacts
-GET https://cse340-web-h32u.onrender.com/contacts
+GET https://cse-341-hs48.onrender.com/contacts
 
 ### Get one contact (replace with actual ID)
-GET https://cse340-web-h32u.onrender.com/contacts/682e23e8cc8f14903304a544
+GET https://cse-341-hs48.onrender.com/contacts/682e23e8cc8f14903304a544
 
 ### Welcome message
-GET https://cse340-web-h32u.onrender.com/
+GET https://cse-341-hs48.onrender.com/
