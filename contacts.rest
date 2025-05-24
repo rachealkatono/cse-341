@@ -3,12 +3,26 @@
 ### Get all contacts
 GET http://localhost:3000/contacts
 
-### Get one contact (replace with actual ID)
+### Get one contact 
 GET http://localhost:3000/contacts/682e23e8cc8f14903304a544
 
 ### Welcome message
 GET http://localhost:3000/
 
+### Create a new contact
+POST http://localhost:3000/contacts Content-Type: application/json
+{
+  "firstname": "Racheal", "lastname": "Katono", 
+  "email": "rafaelktn29@gmail.com","favouriteColor": "black", "birthday": "1997-09-02",
+}
+### Update a contact (replace with actual ID)
+PUT http://localhost:3000/contacts/682e23e8cc8f14903304a544 Content-Type: application/json
+{
+  "firstname": "Racheal", "lastname": "Katono", 
+  "email": "rachealktn29@gmail.com","favouriteColor": "Pink", "birthday": "1997-03-06",
+}
+### Delete a contact (replace with actual ID)
+DELETE http://localhost:3000/contacts/682e23e8cc8f14903304a544
 
 ### Render API Tests
 
@@ -20,3 +34,20 @@ GET https://cse-341-hs48.onrender.com/contacts/682e23e8cc8f14903304a544
 
 ### Welcome message
 GET https://cse-341-hs48.onrender.com/
+
+### Create a new contact
+POST https://cse-341-hs48.onrender.com/contacts Content-Type: application/json
+{
+  "firstname": "Racheal", "lastname": "Katono", 
+  "email": "rafaelktn29@gmail.com","favouriteColor": "black", "birthday": "1997-09-02",
+}
+
+### Update a contact (replace with actual ID)
+PUT https://cse-341-hs48.onrender.com/contacts/682e23e8cc8f14903304a544 Content-Type: application/json
+{
+ "firstname": "Racheal", "lastname": "Katono", 
+  "email": "rachealktn29@gmail.com","favouriteColor": "Pink", "birthday": "1997-03-06",
+}
+
+### Delete a contact (replace with actual ID)
+DELETE https://cse-341-hs48.onrender.com/contacts/682e23e8cc8f14903304a544

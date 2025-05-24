@@ -2,6 +2,8 @@
 require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger-output.json');
 const { connectToDatabase, getDb } = require('./data/database');
 const contactsRoutes = require('./routes/contacts');
 
@@ -11,8 +13,12 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+// Swagger API Documentation
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+
 // Debug route to check database connection
-app.get('/debug/db', async (req, res) => {
+app.get('/debug/data', async (req, res) => {
   try {
     const db = getDb();
     const collections = await db.listCollections().toArray();
@@ -42,11 +48,41 @@ app.get('/debug/db', async (req, res) => {
       stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
     });
   }
-});
+}); 
+// Routes
+/**
+ * @swagger
+ * /contacts:
+ *   get:
+ *     tags:
+ *       - Contacts
+ *     description: Returns all contacts
+ *     responses:
+ *       200:
+ *         description: Successfully returned all contacts
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/definitions/ContactResponse'
+ *       500:
+ *         description: Server error
+ */
 
 // Routes
 app.use('/contacts', contactsRoutes);
 
+// Root route
+/**
+ * @swagger
+ * /:
+ *   get:
+ *     description: Welcome message
+ *     responses:
+ *       200:
+ *         description: Successfully returned welcome message
+ */
 // Root route
 app.get('/', (req, res) => {
   res.send('Welcome to the Contacts API');
@@ -54,6 +90,7 @@ app.get('/', (req, res) => {
 
 const port = process.env.PORT || 3000;
 
+if (require.main === module) {
 app.listen(port, async () => {
   try {
     console.log(`🚀 Server running on http://localhost:${port}`);
@@ -75,3 +112,5 @@ app.listen(port, async () => {
     console.error('❌ Failed to initialize server:', err);
   }
 });
+}
+module.exports = app; // Export the app for testing
